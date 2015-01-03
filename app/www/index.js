@@ -29,9 +29,9 @@
 
 		this.containersNames = function(containers) {
 			var containersNames = [];
-			angular.forEach(containersNames, function(container) {
+			angular.forEach(containers, function(container) {
 				this.push(container.name);
-			}, containers);
+			}, containersNames);
 			return containersNames;
 		};
 
