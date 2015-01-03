@@ -14,7 +14,7 @@
 
 		<div class="btn-group-vertical" style="float: right;" ng:show="ctrl.labels().length">
 			<button
-				ng:repeat="label in ctrl.labels()"
+				ng:repeat="label in ctrl.labels() | orderBy:label"
 				class="btn btn-default"
 				ng:click="ctrl.toggleLabel(label)"
 				ng:class="{'btn-primary': ctrl.labelIsSelected(label)}"
@@ -23,7 +23,7 @@
 
 		<div class="list-group" >
 			<a
-				ng:repeat="host in ctrl.hosts()"
+				ng:repeat="host in ctrl.hosts() | orderBy:'name'"
 				ng:show="ctrl.containersHaveSelectedLabels(host.containers)"
 				class="list-group-item"
 				href="//{{ host.name }}"
