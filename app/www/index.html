@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng:app="VirtualHostsApp">
+	<head>
+		<title>Docker Virtual Hosts</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<style type="text/css">
+			.list-group {
+				max-width: 25em;
+			}
+		</style>
+	</head>
+	<body class="container" ng:controller="VirtualHostsController as ctrl">
+		<h1>Docker Virtual Hosts</h1>
+
+		<div class="btn-group-vertical" style="float: right;" ng:show="ctrl.labels().length">
+			<button
+				ng:repeat="label in ctrl.labels()"
+				class="btn btn-default"
+				ng:click="ctrl.toggleLabel(label)"
+				ng:class="{'btn-primary': ctrl.labelIsSelected(label)}"
+			>{{ label }}</button>
+		</div>
+
+		<div class="list-group" >
+			<a
+				ng:repeat="host in ctrl.hosts()"
+				ng:show="ctrl.containersHaveSelectedLabels(host.containers)"
+				class="list-group-item"
+				href="//{{ host.name }}"
+				title="{{ ctrl.containerLabels(host.containers).join(' ') }}"
+			>
+				{{ host.name }}
+				<span class="badge" title="{{ ctrl.containersNames(host.containers).join(' ') }}">{{ host.containers.length }}</span>
+			</a>
+		</div>
+
+		<p><a href="https://github.com/texthtml/docker-virtual-hosts">More information on Github</a></p>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+		<script type="text/javascript" src="index.js"></script>
+	</body>
+</html>

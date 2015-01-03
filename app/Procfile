@@ -1,0 +1,2 @@
+nginx: nginx
+dockergen: docker-gen -watch -only-exposed /app/hosts.json /app/www/hosts.json
