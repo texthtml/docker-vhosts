@@ -30,7 +30,15 @@
 		this.containersNames = function(containers) {
 			var containersNames = [];
 			angular.forEach(containers, function(container) {
-				this.push(container.name);
+				var image = '';
+				if (container.image.Registry !== '') {
+					image = container.image.Registry + '/';
+				}
+				image += container.image.Repository;
+				if (container.image.Tag !== '') {
+					image += ':' + container.image.Tag;
+				}
+				this.push(container.name + '(' + image + ')');
 			}, containersNames);
 			return containersNames;
 		};

@@ -6,7 +6,7 @@
 			"name": {{ json $host }},
 			"containers": [{{ range $index, $container := $containers }}{{ if $index }},{{ end }}{
 				"name": {{ json $container.Name }},
-				"image": {{ json $container.Image.Registry }},
+				"image": {{ json $container.Image }},
 				"labels": {{ if $container.Env.VIRTUAL_LABELS }}{{ json (split $container.Env.VIRTUAL_LABELS " ")}}{{ else }}[]{{ end }}
 			}{{ end }}]
 		}{{ end }}
