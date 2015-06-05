@@ -6,7 +6,7 @@ docker-virtual-hosts sets up a container running a web service listing your dock
 
 To run it:
 
-    $ docker run -it -e VIRTUAL_HOST=dev.127.0.0.1.xip.io -v /var/run/docker.sock:/tmp/docker.sock --name virtual_hosts texthtml/docker-vhosts
+    $ docker run -it -e VIRTUAL_HOST=dev.127.0.0.1.xip.io -v /var/run/docker.sock:/tmp/docker.sock:ro --name virtual_hosts texthtml/docker-vhosts
 
 If `nginx-proxy` is running and listening on 127.0.0.1, you can visit http://dev.127.0.0.1.xip.io/ to see your other(s) virtual host(s).
 
